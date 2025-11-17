@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'cart.dart';
 import 'category.dart';
 import 'discount.dart';
+import 'editpage.dart';
 import 'homePage.dart';
 import 'loginPage.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: CartPage(),
+    home: EditprofilescreenView(),
   ));
 }
