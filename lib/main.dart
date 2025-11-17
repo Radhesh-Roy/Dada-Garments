@@ -1,4 +1,5 @@
 
+import 'package:dadagarments/productDetails.dart';
 import 'package:dadagarments/profile.dart';
 import 'package:dadagarments/signUp.dart';
 import 'package:dadagarments/splashScreen.dart';
@@ -13,6 +14,6 @@ import 'loginPage.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: ProfilescreenView(),
+    home: ProductdetailsView(),
   ));
 }
