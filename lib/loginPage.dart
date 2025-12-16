@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import 'controller/authentication/logIn.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,7 +11,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey=GlobalKey<FormState>();
   bool _obscure = true;
+
+  TextEditingController numC=TextEditingController();
+  TextEditingController passC=TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,80 +42,93 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: true,
         title: Image.asset("assets/appbarImage.png", height: 40, width: 133,),
       ),
-      body: SafeArea(
+      body: Form(
+       key:  _formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding:  EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
 
-              // TAB BAR (SIGN IN / SIGN UP)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      const Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                         Text(
+                          "Sign In",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 6),
-                      Container(
-                        height: 3,
-                        width: 179,
-                        color: Colors.orange,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(width: 40),
-                  Column(
-                    children: [
-                      const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                         SizedBox(height: 6),
+                        Container(
+                          height: 3,
+                          width: 179,
+                          color: Colors.orange,
                         ),
-                      ),
-                      const SizedBox(height: 6),
-                      Container(
-                        height: 3,
-                        width: 179,
-                        color: Colors.orange,
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                     SizedBox(width: 40),
+                    Column(
+                      children: [
+                         Text(
+                          "Sign Up",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                         SizedBox(height: 6),
+                        Container(
+                          height: 3,
+                          width: 179,
+                          color: Colors.orange,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
 
-              const SizedBox(height: 30),
+               SizedBox(height: 30),
 
-              const Text(
+               Text(
                 "Welcome Back!",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 6),
-              const Text(
+               SizedBox(height: 6),
+               Text(
                 "Please enter your details to login.",
                 style: TextStyle(color: Colors.grey),
               ),
 
-              const SizedBox(height: 25),
+               SizedBox(height: 25),
 
               // PHONE NUMBER
-              const Text(
+               Text(
                 "Phone Number",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 8),
-              TextField(
+               SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null|| value.isEmpty){
+                    return "Please Enter Phone Number";
+                  }
+                  return null;
+
+
+                },
+                controller: numC,
                 decoration: InputDecoration(
                   hintText: "Enter your phone number",
                   border: OutlineInputBorder(
@@ -116,15 +137,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+               SizedBox(height: 20),
 
               // PASSWORD
-              const Text(
+               Text(
                 "Password",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 8),
-              TextField(
+               SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null||value.isEmpty){
+                    return "Please Enter Your Password";
+                  }
+                  return null;
+                },
+                controller: passC,
                 obscureText: _obscure,
                 decoration: InputDecoration(
                   hintText: "************",
@@ -145,46 +173,55 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 10),
+               SizedBox(height: 10),
 
               // FORGOT PASSWORD
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {},
-                  child: const Text(
+                  child:  Text(
                     "Forgot Password",
                     style: TextStyle(color: Colors.orange),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 10),
+               SizedBox(height: 10),
 
               // LOGIN BUTTON
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if(!_formKey.currentState!.validate()){
+                      return;
+                    }
+                    FlutterSecureStorage secure=FlutterSecureStorage();
+                    secure.read(key: "token");
+                    LogInAccount.loginAccount(phone: numC.text, password: passC.text);
+
+
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    padding:  EdgeInsets.symmetric(vertical: 14),
                   ),
-                  child: const Text(
+                  child:  Text(
                     "Login",
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 15),
+               SizedBox(height: 15),
 
               // OR DIVIDER
               Row(
-                children: const [
+                children:  [
                   Expanded(child: Divider()),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
@@ -194,12 +231,12 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
 
-              const SizedBox(height: 15),
+               SizedBox(height: 15),
 
               // GOOGLE SIGN-IN
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 13),
+                padding:  EdgeInsets.symmetric(vertical: 13),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.grey.shade400),
@@ -208,18 +245,18 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("assets/google.png", height: 18),
-                    const SizedBox(width: 10),
-                    const Text("Sign in with google"),
+                     SizedBox(width: 10),
+                     Text("Sign in with google"),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 12),
+               SizedBox(height: 12),
 
-              // FACEBOOK SIGN-IN
+
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 13),
+                padding:  EdgeInsets.symmetric(vertical: 13),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.grey.shade400),
@@ -228,22 +265,22 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("assets/facebook.png", height: 18),
-                    const SizedBox(width: 10),
-                    const Text("Sign in with facebook"),
+                     SizedBox(width: 10),
+                     Text("Sign in with facebook"),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 20),
+               SizedBox(height: 20),
 
-              // REGISTER TEXT
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Already have an account? "),
+                   Text("Already have an account? "),
                   GestureDetector(
                     onTap: () {},
-                    child: const Text(
+                    child:  Text(
                       "Register here",
                       style: TextStyle(
                         color: Colors.orange,
@@ -254,7 +291,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
 
-              const SizedBox(height: 20),
+               SizedBox(height: 20),
             ],
           ),
         ),

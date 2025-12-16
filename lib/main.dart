@@ -14,6 +14,6 @@ import 'loginPage.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: ProductdetailsView(),
+    home: SignUpPage(),
   ));
 }
