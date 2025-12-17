@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 
 class DiscountPage extends StatefulWidget {
   const DiscountPage({super.key});
@@ -13,9 +13,7 @@ class _DiscountPageState extends State<DiscountPage> {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: SafeArea(
+      body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
@@ -61,933 +59,138 @@ class _DiscountPageState extends State<DiscountPage> {
                     ),
                   ],
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/card1.png",
-                                    width: 179,
-                                    height: 156,
-                                    fit: BoxFit.cover,
-                                  ),
+                Expanded(
+                  child: GridView.builder(
 
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
+                    itemCount: 10,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                    crossAxisSpacing: 2,
+                      childAspectRatio: 0.9,
+                      mainAxisSpacing: 10,
 
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
 
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Cart"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
 
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
+                    ), itemBuilder: (context, index) {
+                    return Card(
+                      child: Container(
+                        height: 261,
+                        width: 180,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Column(
+                              spacing: 2,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/card1.png",
+
+
+                                  fit: BoxFit.fitWidth,
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "OFFER",
+                                    "Party Borkha Abaya Koliza",
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xff1E1E1E),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/card2.png",
-                                    width: 179,
-                                    height: 156,
+
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsGeometry.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Card"),
+                                  child: Row(
+                                    spacing: 5,
+                                    children: [
+                                      Text(
+                                        "2800",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                    ),
+                                      Text(
+                                        "3200",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          decoration:
+                                          TextDecoration.lineThrough,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                                ),
+
+                                Center(
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 88,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          5,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text("Add To Cart"),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              /// ---- Main Column (Product Content) ----
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // Product Image
-                                  Image.asset(
-                                    "assets/card1.png",
-                                    width: 179,
-                                    height: 156,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ],
+                            ),
 
-                                  // Title
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-
-                                  // Price Row
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  // Add to Cart Button
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Cart"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-                              /// ---- Positioned Widget (Example: Discount Tag) ----
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            Positioned(
+                              top: 5,
+                              left: 10,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 3,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Text(
+                                  "OFFER",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/card2.png",
-                                    width: 179,
-                                    height: 156,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsGeometry.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Card"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              /// ---- Main Column (Product Content) ----
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // Product Image
-                                  Image.asset(
-                                    "assets/card1.png",
-                                    width: 179,
-                                    height: 156,
-                                    fit: BoxFit.cover,
-                                  ),
+                    );
+                  },),
+                )
 
-                                  // Title
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-
-                                  // Price Row
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  // Add to Cart Button
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Cart"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-                              /// ---- Positioned Widget (Example: Discount Tag) ----
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/card2.png",
-                                    width: 179,
-                                    height: 156,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsGeometry.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Card"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              /// ---- Main Column (Product Content) ----
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // Product Image
-                                  Image.asset(
-                                    "assets/card1.png",
-                                    width: 179,
-                                    height: 156,
-                                    fit: BoxFit.cover,
-                                  ),
-
-                                  // Title
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-
-                                  // Price Row
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  // Add to Cart Button
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Cart"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-                              /// ---- Positioned Widget (Example: Discount Tag) ----
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Column(
-                                spacing: 2,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/card2.png",
-                                    width: 179,
-                                    height: 156,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Party Borkha Abaya Koliza",
-                                      style: TextStyle(
-                                        color: Color(0xff1E1E1E),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsGeometry.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Row(
-                                      spacing: 5,
-                                      children: [
-                                        Text(
-                                          "2800",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          "3200",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Center(
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 88,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Add To Card"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 5,
-                                left: 10,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    "OFFER",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),
         ),
-      ),
     );
+
   }
 }

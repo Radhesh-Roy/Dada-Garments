@@ -4,6 +4,7 @@ import 'package:dadagarments/profile.dart';
 import 'package:dadagarments/signUp.dart';
 import 'package:dadagarments/splashScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'cart.dart';
 import 'category.dart';
@@ -14,6 +15,7 @@ import 'loginPage.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SignUpPage(),
+    builder: EasyLoading.init(),
+    home: Splashscreen(),
   ));
 }

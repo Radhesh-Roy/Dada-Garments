@@ -193,13 +193,13 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async{
                     if(!_formKey.currentState!.validate()){
                       return;
                     }
-                    FlutterSecureStorage secure=FlutterSecureStorage();
-                    secure.read(key: "token");
-                    LogInAccount.loginAccount(phone: numC.text, password: passC.text);
+
+                   var data= await LogInAccount.loginAccount(phone: numC.text, password: passC.text);
+
 
 
                   },
