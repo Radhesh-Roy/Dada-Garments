@@ -1,4 +1,7 @@
-  import 'package:flutter/material.dart';
+  import 'dart:developer';
+
+import 'package:dadagarments/controller/discountpage/discount.dart';
+import 'package:flutter/material.dart';
 
 class DiscountPage extends StatefulWidget {
   const DiscountPage({super.key});
@@ -8,11 +11,21 @@ class DiscountPage extends StatefulWidget {
 }
 
 class _DiscountPageState extends State<DiscountPage> {
+  List discountProduct=[];
+
+  getProduct() async{
+
+    discountProduct= await DiscountPruduct().getDiscountProduct();
+  }
+@override
+  void initState() {
+  getProduct();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10),
@@ -62,12 +75,11 @@ class _DiscountPageState extends State<DiscountPage> {
                 Expanded(
                   child: GridView.builder(
 
-                    itemCount: 10,
+                    itemCount: discountProduct.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-                    crossAxisSpacing: 2,
-                      childAspectRatio: 0.9,
+                    crossAxisSpacing: 10,
+                      childAspectRatio: 0.7,
                       mainAxisSpacing: 10,
-
 
 
                     ), itemBuilder: (context, index) {
@@ -83,20 +95,18 @@ class _DiscountPageState extends State<DiscountPage> {
                           clipBehavior: Clip.none,
                           children: [
                             Column(
-                              spacing: 2,
+                              spacing: 5,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.asset(
-                                  "assets/card1.png",
 
-
+                                Image.network(
+                                  "https://eplay.coderangon.com/public/storage/${discountProduct[index]["image"]}",
                                   fit: BoxFit.fitWidth,
                                 ),
-
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Party Borkha Abaya Koliza",
+                                    "${discountProduct[index]["title"]}",
                                     style: TextStyle(
                                       color: Color(0xff1E1E1E),
                                       fontSize: 12,
@@ -104,7 +114,6 @@ class _DiscountPageState extends State<DiscountPage> {
                                     ),
                                   ),
                                 ),
-
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 10,
@@ -113,14 +122,14 @@ class _DiscountPageState extends State<DiscountPage> {
                                     spacing: 5,
                                     children: [
                                       Text(
-                                        "2800",
+                                        "${discountProduct[index]["price"]}",
                                         style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                       Text(
-                                        "3200",
+                                        "${discountProduct[index]["old_price"]}",
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 14,
@@ -132,7 +141,6 @@ class _DiscountPageState extends State<DiscountPage> {
                                     ],
                                   ),
                                 ),
-
                                 Center(
                                   child: InkWell(
                                     onTap: () {},

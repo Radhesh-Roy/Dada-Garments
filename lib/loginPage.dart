@@ -1,3 +1,5 @@
+import 'package:dadagarments/discount.dart';
+import 'package:dadagarments/signUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -197,8 +199,11 @@ class _LoginPageState extends State<LoginPage> {
                     if(!_formKey.currentState!.validate()){
                       return;
                     }
-
                    var data= await LogInAccount.loginAccount(phone: numC.text, password: passC.text);
+                    if(data){
+
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DiscountPage(),));
+                    }
 
 
 
@@ -277,9 +282,12 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text("Already have an account? "),
-                  GestureDetector(
-                    onTap: () {},
+                   Text("Already have no account? "),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+
+                    },
                     child:  Text(
                       "Register here",
                       style: TextStyle(
