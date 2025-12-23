@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -29,14 +30,12 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
+      body: Padding(
           padding: const EdgeInsets.all(15),
           child: Container(
-            child: Column(
-              spacing: 20,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+shrinkWrap: true,
+              scrollDirection: Axis.vertical,
               children: [
                 Row(
                   children: [
@@ -77,12 +76,26 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-                Container(
-                  height: 147,
-                  width: 358,
-                  decoration: BoxDecoration(),
-                  child: Image.asset("assets/slider.png", fit: BoxFit.cover),
+                SizedBox(height: 15),
+                CarouselSlider(
+                  options: CarouselOptions(height: 180.0, viewportFraction: 1, autoPlay: true),
+                  items: [1,2,3,4,5].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+
+                        return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            decoration: BoxDecoration(
+
+color: Colors.red                            ),
+
+                        );
+                      },
+                    );
+                  }).toList(),
                 ),
+                SizedBox(height: 15),
                 Text(
                   "Categories",
                   style: TextStyle(
@@ -91,110 +104,44 @@ class _HomepageState extends State<Homepage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SingleChildScrollView(
+                SizedBox(height: 15),
+              SizedBox(
+                height: 100,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                  itemCount: 5,
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    spacing: 10,
-                    children: [
-                      Container(
-                        height: 109,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.all(5),
+                    height: 109,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: AssetImage("assets/category-image.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Center(
+                      child: Container(
+                        height: 18,
                         width: 90,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: AssetImage("assets/category-image.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                        decoration: BoxDecoration(color: Colors.black54),
                         child: Center(
-                          child: Container(
-                            height: 18,
-                            width: 90,
-                            decoration: BoxDecoration(color: Colors.black54),
-                            child: Center(
-                              child: Text(
-                                "womens-2",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
+                          child: Text(
+                            "womens-2",
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
-                      Container(
-                        height: 109,
-                        width: 90,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: AssetImage("assets/category-image.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Center(
-                          child: Container(
-                            height: 18,
-                            width: 90,
-                            decoration: BoxDecoration(color: Colors.black54),
-                            child: Center(
-                              child: Text(
-                                "womens-2",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 109,
-                        width: 90,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: AssetImage("assets/category-image.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Center(
-                          child: Container(
-                            height: 18,
-                            width: 90,
-                            decoration: BoxDecoration(color: Colors.black54),
-                            child: Center(
-                              child: Text(
-                                "womens-2",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 109,
-                        width: 90,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: AssetImage("assets/category-image.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Center(
-                          child: Container(
-                            height: 18,
-                            width: 90,
-                            decoration: BoxDecoration(color: Colors.black54),
-                            child: Center(
-                              child: Text(
-                                "womens-2",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+
+                },),
+              ), //Categories
+                SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -216,163 +163,94 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-                SingleChildScrollView(
+                SizedBox(height: 15),
+                SizedBox(
+                  height: 268,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                  itemCount: 10,
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                  shrinkWrap: true,
+
+                  itemBuilder: (context, index) {
+                  return Card(
+                    child: Container(
+                      height: 261,
+                      width: 180,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        spacing: 2,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "assets/card1.png",
+                            width: 179,
+                            height: 156,
                           ),
-                          child: Column(
-                            spacing: 2,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/card1.png",
-                                width: 179,
-                                height: 156,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Party Borkha Abaya Koliza",
+                              style: TextStyle(
+                                color: Color(0xff1E1E1E),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Party Borkha Abaya Koliza",
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsGeometry.symmetric(
+                              horizontal: 10,
+                            ),
+                            child: Row(
+                              spacing: 5,
+                              children: [
+                                Text(
+                                  "2800",
                                   style: TextStyle(
-                                    color: Color(0xff1E1E1E),
-                                    fontSize: 12,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsGeometry.symmetric(
-                                  horizontal: 10,
-                                ),
-                                child: Row(
-                                  spacing: 5,
-                                  children: [
-                                    Text(
-                                      "2800",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Text(
-                                      "3200",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Center(
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    height: 30,
-                                    width: 88,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Center(child: Text("Add To Card")),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            spacing: 2,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/card2.png",
-                                width: 179,
-                                height: 156,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Party Borkha Abaya Koliza",
+                                Text(
+                                  "3200",
                                   style: TextStyle(
-                                    color: Color(0xff1E1E1E),
-                                    fontSize: 12,
+                                    color: Colors.grey,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w500,
+                                    decoration: TextDecoration.lineThrough,
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsGeometry.symmetric(
-                                  horizontal: 10,
-                                ),
-                                child: Row(
-                                  spacing: 5,
-                                  children: [
-                                    Text(
-                                      "2800",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Text(
-                                      "3200",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Center(
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    height: 30,
-                                    width: 88,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Center(child: Text("Add To Card")),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
+                          Center(
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                height: 30,
+                                width: 88,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.grey,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Center(child: Text("Add To Card")),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },),
+              ), //Best Selling
+                SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -394,11 +272,16 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Card(
+                SizedBox(
+                  height: 268,
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+
+                    itemBuilder: (context, index) {
+                      return Card(
                         child: Container(
                           height: 261,
                           width: 180,
@@ -472,85 +355,10 @@ class _HomepageState extends State<Homepage> {
                             ],
                           ),
                         ),
-                      ),
-                      Card(
-                        child: Container(
-                          height: 261,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            spacing: 2,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/card2.png",
-                                width: 179,
-                                height: 156,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Party Borkha Abaya Koliza",
-                                  style: TextStyle(
-                                    color: Color(0xff1E1E1E),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsGeometry.symmetric(
-                                  horizontal: 10,
-                                ),
-                                child: Row(
-                                  spacing: 5,
-                                  children: [
-                                    Text(
-                                      "2800",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Text(
-                                      "3200",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Center(
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    height: 30,
-                                    width: 88,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Center(child: Text("Add To Card")),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                      );
+                    },),
+                ), //New Arrival
+                SizedBox(height: 15),
                 Container(
                   height: 442,
                   width: 358,
@@ -767,6 +575,7 @@ class _HomepageState extends State<Homepage> {
                     ],
                   ),
                 ),
+                SizedBox(height: 15),
                 Container(
                   height: 442,
                   width: 358,
@@ -990,7 +799,6 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

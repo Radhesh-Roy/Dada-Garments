@@ -6,6 +6,7 @@ import 'package:dadagarments/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'bottomnavigation.dart';
 import 'cart.dart';
 import 'category.dart';
 import 'discount.dart';
@@ -16,6 +17,6 @@ void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     builder: EasyLoading.init(),
-    home: Splashscreen(),
+    home: Homepage(),
   ));
 }
