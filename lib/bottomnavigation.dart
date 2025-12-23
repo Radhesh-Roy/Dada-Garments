@@ -17,7 +17,7 @@ class _BottomBarState extends State<BottomBar> {
         currentIndex: 0,
         onTap: (value) {
           if(value==0){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(title: '',),));
           }
           else if(value==1){
             Navigator.push(context,MaterialPageRoute(builder: (context) => CategoryPage(),));

@@ -39,6 +39,7 @@ getCategoryProduct()async{
   void initState() {
     getByData();
     getCategory();
+    getCategoryProduct();
     super.initState();
   }
 
@@ -216,7 +217,7 @@ getCategoryProduct()async{
                 height: 268,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: categoryProduct.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
 
@@ -233,15 +234,15 @@ getCategoryProduct()async{
                           spacing: 2,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(
-                              "assets/card1.png",
+                            Image.network(
+                              "https://b4.coderangon.com/storage/${categoryProduct[index]["image"]}",
                               width: 179,
                               height: 156,
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "Party Borkha Abaya Koliza",
+                                "${categoryProduct[index]["title"]}",
                                 style: TextStyle(
                                   color: Color(0xff1E1E1E),
                                   fontSize: 12,
@@ -257,14 +258,14 @@ getCategoryProduct()async{
                                 spacing: 5,
                                 children: [
                                   Text(
-                                    "2800",
+                                    "${categoryProduct[index]["price"]}",
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                   Text(
-                                    "3200",
+                                    "${categoryProduct[index]["old_price"]}",
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 14,
