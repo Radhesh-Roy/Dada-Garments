@@ -16,6 +16,10 @@ class _DiscountPageState extends State<DiscountPage> {
   getProduct() async{
 
     discountProduct= await DiscountPruduct().getDiscountProduct();
+    log("$discountProduct");
+    setState(() {
+
+    });
   }
 @override
   void initState() {
@@ -99,9 +103,17 @@ class _DiscountPageState extends State<DiscountPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
 
-                                Image.network(
-                                  "https://eplay.coderangon.com/public/storage/${discountProduct[index]["image"]}",
-                                  fit: BoxFit.fitWidth,
+                                Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 120,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            "https://eplay.coderangon.com/public/storage/${discountProduct[index]["image"]}"
+                                        ),
+                                    fit: BoxFit.cover),
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),

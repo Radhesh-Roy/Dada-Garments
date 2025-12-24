@@ -220,7 +220,7 @@ getCategoryProduct()async{
                   itemCount: categoryProduct.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-
+                  physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Card(
                       child: Container(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'controller/authentication/logIn.dart';
+import 'homePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -202,11 +203,8 @@ class _LoginPageState extends State<LoginPage> {
                    var data= await LogInAccount.loginAccount(phone: numC.text, password: passC.text);
                     if(data){
 
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DiscountPage(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(title: '',),));
                     }
-
-
-
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

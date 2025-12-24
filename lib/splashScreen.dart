@@ -19,7 +19,7 @@ class _SplashscreenState extends State<Splashscreen> {
      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
    }
    else{
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DiscountPage(),));
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(title: '',),));
    }
  }
  @override
