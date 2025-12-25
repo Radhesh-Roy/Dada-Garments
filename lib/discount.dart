@@ -109,10 +109,12 @@ class _DiscountPageState extends State<DiscountPage> {
                                   width: MediaQuery.sizeOf(context).width,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
+
                                         image: NetworkImage(
                                             "https://eplay.coderangon.com/public/storage/${discountProduct[index]["image"]}"
                                         ),
-                                    fit: BoxFit.cover),
+
+                                        fit: BoxFit.cover),
                                   ),
                                 ),
                                 Padding(
