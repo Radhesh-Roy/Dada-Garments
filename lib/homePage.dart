@@ -147,8 +147,10 @@ getCategoryProduct()async{
               SizedBox(height: 15),
               SizedBox(
                 height: 100,
+
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
+
                   itemCount: categoryList.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
