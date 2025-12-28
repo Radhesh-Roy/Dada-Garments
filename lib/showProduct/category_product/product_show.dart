@@ -1,22 +1,32 @@
 import 'dart:developer';
 
 import 'package:dadagarments/controller/discountpage/discount.dart';
+import 'package:dadagarments/controller/product/product_controller.dart';
 import 'package:flutter/material.dart';
 
 class ProductShowPage extends StatefulWidget {
-  const ProductShowPage({super.key});
+  const ProductShowPage({super.key, required this.title});
+
+  final String title;
+
 
   @override
   State<ProductShowPage> createState() => _DiscountPageState();
 }
 
 class _DiscountPageState extends State<ProductShowPage> {
+  List categoryWiseProduct=[];
 
   getProduct() async{
+categoryWiseProduct= await GetProduct().getProductData(title: widget.title);
+log("$categoryWiseProduct");
+setState(() {
 
+});
   }
   @override
   void initState() {
+    getProduct();
     super.initState();
   }
   @override
@@ -34,7 +44,7 @@ class _DiscountPageState extends State<ProductShowPage> {
                 children: [
                   SizedBox(
                     height: 45,
-                    width: 293,
+                    width: 330,
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -72,7 +82,7 @@ class _DiscountPageState extends State<ProductShowPage> {
               Expanded(
                 child: GridView.builder(
 
-                  itemCount: 10,
+                  itemCount:categoryWiseProduct.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     childAspectRatio: 0.7,
@@ -94,21 +104,28 @@ class _DiscountPageState extends State<ProductShowPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
 
-                              Image.network(
-                                "https://eplay.coderangon.com/public/storage/{discountProduct[index][""]}",
-                                fit: BoxFit.fitWidth,
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                height: 120,
+                                width: MediaQuery.sizeOf(context).width,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+
+                                      image: NetworkImage(
+                                          "https://eplay.coderangon.com/public/storage/${categoryWiseProduct[index]["image"]}"
+                                      ),
+
+                                      fit: BoxFit.cover),
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "{[index][""]}",
-                                  maxLines: 1,
+                                  "${categoryWiseProduct[index]["title"]}",
                                   style: TextStyle(
                                     color: Color(0xff1E1E1E),
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    overflow: TextOverflow.ellipsis
-
                                   ),
                                 ),
                               ),
@@ -120,14 +137,14 @@ class _DiscountPageState extends State<ProductShowPage> {
                                   spacing: 5,
                                   children: [
                                     Text(
-                                      "new price}",
+                                      "${categoryWiseProduct[index]["price"]}",
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                     Text(
-                                      "old price",
+                                      "${categoryWiseProduct[index]["old_price"]}",
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 14,

@@ -157,7 +157,8 @@ getCategoryProduct()async{
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductShowPage(),));
+                        log("${categoryList[index]["id"]}");
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => ProductShowPage(title:"${categoryList[index]["id"]}",),));
                         
                       },
                       

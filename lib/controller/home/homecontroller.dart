@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class HomeController{
   Future<List>getHomeData()async{
     try{
-      Uri uri=Uri.parse("https://b4.coderangon.com/api/categories");
+      Uri uri=Uri.parse("https://eplay.coderangon.com/api/categories");
       var res= await http.get(uri);
       if(res.statusCode==200){
         return jsonDecode(res.body)["data"];
