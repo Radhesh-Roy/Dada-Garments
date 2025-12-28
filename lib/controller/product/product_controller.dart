@@ -9,6 +9,8 @@ try{
   Uri uri;
   if(title=="top selling"){
     uri=Uri.parse("https://eplay.coderangon.com/api/products");
+    var res= await http.get(uri);
+    log("========${res.body}");
   }
   else if(title=="latest"){
     uri=Uri.parse("https://eplay.coderangon.com/api/products/latests");

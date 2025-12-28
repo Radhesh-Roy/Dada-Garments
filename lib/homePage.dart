@@ -4,8 +4,12 @@ import 'package:dadagarments/controller/home/homecontroller.dart';
 import 'package:dadagarments/controller/product/product_controller.dart';
 import 'package:dadagarments/controller/slider/sliderApi.dart';
 import 'package:dadagarments/showProduct/category_product/product_show.dart';
+import 'package:dadagarments/showProduct/hot-selling/hot-sell.dart';
+import 'package:dadagarments/showProduct/top-selling/top-sell.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+import 'controller/home/selling-product/sell-product.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key, required this.title});
@@ -18,28 +22,29 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   List data = [];
   List categoryList = [];
-  List categoryProduct = [];
-  List latestProduct = [];
-  List bestSellProduct = [];
+  Map sellProductData={};
   getByData() async {
     data = await GetSlider().getSlider();
     setState(() {});
   }
   getCategory() async {
     categoryList = await HomeController().getHomeData();
+    log("==============: $categoryList");
     setState(() {
     });
   }
-getCategoryProduct()async{
-    categoryProduct=await GetProduct().getProductData(title: widget.title);
+  getSellProduct() async{
+    sellProductData= await SellingProduct().GetSellProduct();
     setState(() {
+
     });
-}
+  }
+
   @override
   void initState() {
     getByData();
     getCategory();
-    getCategoryProduct();
+    getSellProduct();
     super.initState();
   }
 
@@ -68,7 +73,7 @@ getCategoryProduct()async{
         padding: const EdgeInsets.all(15),
         child: Container(
           child: ListView(
-            shrinkWrap: true,
+
             scrollDirection: Axis.vertical,
             children: [
               Row(
@@ -205,131 +210,30 @@ getCategoryProduct()async{
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
-                    "See All",
-                    style: TextStyle(
-                      color: Color(0xffFF8900),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              SizedBox(
-                height: 268,
-                width: MediaQuery.sizeOf(context).width,
-                child: ListView.builder(
-                  itemCount: categoryProduct.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: Container(
-                        height: 261,
-                        width: 180,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          spacing: 2,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.network(
-                              "https://b4.coderangon.com/storage/${categoryProduct[index]["image"]}",
-                              width: 179,
-                              height: 156,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "${categoryProduct[index]["title"]}",
-                                style: TextStyle(
-                                  color: Color(0xff1E1E1E),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsGeometry.symmetric(
-                                horizontal: 10,
-                              ),
-                              child: Row(
-                                spacing: 5,
-                                children: [
-                                  Text(
-                                    "${categoryProduct[index]["price"]}",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${categoryProduct[index]["old_price"]}",
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Center(
-                              child: InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  height: 30,
-                                  width: 88,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Center(child: Text("Add To Card")),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                  InkWell(
+
+                    onTap: (){
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HotSellPage(title: "top selling")));
+
+                    },
+                    child: Text(
+                      "See All",
+                      style: TextStyle(
+                        color: Color(0xffFF8900),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
                       ),
-                    );
-                  },
-                ),
-              ), //Best Selling
-              SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "New Arrival",
-                    style: TextStyle(
-                      color: Color(0xff5F5F5F),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Text(
-                    "See All",
-                    style: TextStyle(
-                      color: Color(0xffFF8900),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
+              SizedBox(height: 15),
               SizedBox(
                 height: 268,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: sellProductData["top-selling"].length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
 
@@ -342,66 +246,267 @@ getCategoryProduct()async{
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Column(
-                          spacing: 2,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Stack(
+                          clipBehavior: Clip.none,
                           children: [
-                            Image.asset(
-                              "assets/card1.png",
-                              width: 179,
-                              height: 156,
+                            Column(
+                              spacing: 5,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+                                Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 120,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+
+                                        image: NetworkImage(
+                                            "https://eplay.coderangon.com/public/storage/${sellProductData["top-selling"][index]["image"]}"
+                                        ),
+
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${sellProductData["top-selling"][index]["title"]}",
+                                    style: TextStyle(
+                                      color: Color(0xff1E1E1E),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
+                                  child: Row(
+                                    spacing: 5,
+                                    children: [
+                                      Text(
+                                        "${sellProductData["top-selling"][index]["price"]}",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${sellProductData["top-selling"][index]["old_price"]}",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          decoration:
+                                          TextDecoration.lineThrough,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Center(
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 88,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          5,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text("Add To Cart"),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Party Borkha Abaya Koliza",
-                                style: TextStyle(
-                                  color: Color(0xff1E1E1E),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
+
+                            Positioned(
+                              top: 5,
+                              left: 10,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 3,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Text(
+                                  "OFFER",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsGeometry.symmetric(
-                                horizontal: 10,
-                              ),
-                              child: Row(
-                                spacing: 5,
-                                children: [
-                                  Text(
-                                    "2800",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Text(
-                                    "3200",
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Center(
-                              child: InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  height: 30,
-                                  width: 88,
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),//Best Selling
+              SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "New Arrival",
+                    style: TextStyle(
+                      color: Color(0xff5F5F5F),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>TopSellPage(title: "latest")));
+                    },
+                    child: Text(
+                      "See All",
+                      style: TextStyle(
+                        color: Color(0xffFF8900),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+                height: 268,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                  itemCount: sellProductData["hot-selling"].length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: Container(
+                        height: 261,
+                        width: 180,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Column(
+                              spacing: 5,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+                                Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 120,
+                                  width: MediaQuery.sizeOf(context).width,
                                   decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5),
+                                    image: DecorationImage(
+
+                                        image: NetworkImage(
+                                            "https://eplay.coderangon.com/public/storage/${sellProductData["hot-selling"][index]["image"]}"
+                                        ),
+
+                                        fit: BoxFit.cover),
                                   ),
-                                  child: Center(child: Text("Add To Card")),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${sellProductData["hot-selling"][index]["title"]}",
+                                    style: TextStyle(
+                                      color: Color(0xff1E1E1E),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
+                                  child: Row(
+                                    spacing: 5,
+                                    children: [
+                                      Text(
+                                        "${sellProductData["hot-selling"][index]["price"]}",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${sellProductData["hot-selling"][index]["old_price"]}",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          decoration:
+                                          TextDecoration.lineThrough,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Center(
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 88,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          5,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text("Add To Cart"),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Positioned(
+                              top: 5,
+                              left: 10,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 3,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Text(
+                                  "OFFER",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
