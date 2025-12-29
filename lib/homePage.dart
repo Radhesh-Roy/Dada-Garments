@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:dadagarments/controller/home/homecontroller.dart';
+import 'package:dadagarments/controller/product-details/product-details.dart';
 import 'package:dadagarments/controller/product/product_controller.dart';
 import 'package:dadagarments/controller/slider/sliderApi.dart';
+import 'package:dadagarments/productDetails.dart';
 import 'package:dadagarments/showProduct/category_product/product_show.dart';
 import 'package:dadagarments/showProduct/hot-selling/hot-sell.dart';
 import 'package:dadagarments/showProduct/top-selling/top-sell.dart';
@@ -238,121 +240,127 @@ class _HomepageState extends State<Homepage> {
                   shrinkWrap: true,
 
                   itemBuilder: (context, index) {
-                    return Card(
-                      child: Container(
-                        height: 261,
-                        width: 180,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Column(
-                              spacing: 5,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                    return InkWell(
+                      onTap: (){
 
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  height: 120,
-                                  width: MediaQuery.sizeOf(context).width,
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductdetailsView(id: sellProductData["top-selling"][index]["id"])));
+
+                      },
+                      child: Card(
+                        child: Container(
+                          height: 261,
+                          width: 180,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Column(
+                                spacing: 5,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+                                  Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 120,
+                                    width: MediaQuery.sizeOf(context).width,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              "https://eplay.coderangon.com/public/storage/${sellProductData["top-selling"][index]["image"]}"
+                                          ),
+
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "${sellProductData["top-selling"][index]["title"]}",
+                                      style: TextStyle(
+                                        color: Color(0xff1E1E1E),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: Row(
+                                      spacing: 5,
+                                      children: [
+                                        Text(
+                                          "${sellProductData["top-selling"][index]["price"]}",
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${sellProductData["top-selling"][index]["old_price"]}",
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            decoration:
+                                            TextDecoration.lineThrough,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Center(
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 30,
+                                        width: 88,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.grey,
+                                            width: 1,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            5,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text("Add To Cart"),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              Positioned(
+                                top: 5,
+                                left: 10,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 6,
+                                    vertical: 3,
+                                  ),
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(
-
-                                        image: NetworkImage(
-                                            "https://eplay.coderangon.com/public/storage/${sellProductData["top-selling"][index]["image"]}"
-                                        ),
-
-                                        fit: BoxFit.cover),
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(5),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${sellProductData["top-selling"][index]["title"]}",
+                                    "OFFER",
                                     style: TextStyle(
-                                      color: Color(0xff1E1E1E),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                  ),
-                                  child: Row(
-                                    spacing: 5,
-                                    children: [
-                                      Text(
-                                        "${sellProductData["top-selling"][index]["price"]}",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      Text(
-                                        "${sellProductData["top-selling"][index]["old_price"]}",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                          decoration:
-                                          TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Center(
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 30,
-                                      width: 88,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.grey,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(
-                                          5,
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: Text("Add To Cart"),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            Positioned(
-                              top: 5,
-                              left: 10,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 6,
-                                  vertical: 3,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Text(
-                                  "OFFER",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );
