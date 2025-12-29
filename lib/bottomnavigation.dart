@@ -1,7 +1,7 @@
 import 'package:dadagarments/category.dart';
 import 'package:dadagarments/homePage.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+//import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
 
@@ -25,23 +25,24 @@ class _BottomBarState extends State<BottomBar> {
   ];
   @override
   Widget build(BuildContext context) {
+    return Scaffold();
 
-
-  return Scaffold(
-    floatingActionButton: FloatingActionButton(onPressed: () {  },
-      //params
-    ),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    bottomNavigationBar: AnimatedBottomNavigationBar(
-      icons: iconList,
-      activeIndex: _currentIndex,
-      gapLocation: GapLocation.center,
-      notchSmoothness: NotchSmoothness.smoothEdge,
-      onTap: (index) => setState(() => _currentIndex = index),
-      //other params
-    ),
-  );}
+  }
 }
+   // floatingActionButton: FloatingActionButton(onPressed: () {  })
+      //params
+ //   ),
+    //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    // bottomNavigationBar: AnimatedBottomNavigationBar(
+    //   icons: iconList,
+    //   activeIndex: _currentIndex,
+    //   gapLocation: GapLocation.center,
+    //   notchSmoothness: NotchSmoothness.smoothEdge,
+    //   onTap: (index) => setState(() => _currentIndex = index),
+      //other params
+//     ),
+//   );}
+// }
 //     return Scaffold(
 //       bottomNavigationBar: BottomNavigationBar(
 //         currentIndex: 0,

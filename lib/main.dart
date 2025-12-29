@@ -17,6 +17,6 @@ void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     builder: EasyLoading.init(),
-    home: BottomBar(),
+    home: ProductdetailsView(id: 2,),
   ));
 }

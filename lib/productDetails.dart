@@ -1,13 +1,34 @@
+import 'dart:developer';
+
+import 'package:dadagarments/controller/product-details/product-details.dart';
 import 'package:flutter/material.dart';
 
 class ProductdetailsView extends StatefulWidget {
-  const ProductdetailsView({super.key});
+  const ProductdetailsView({super.key, required this.id});
+
+  final int id;
 
   @override
   State<ProductdetailsView> createState() => _ProductdetailsViewState();
 }
 
 class _ProductdetailsViewState extends State<ProductdetailsView> {
+  Map productDetailsData={};
+
+  getProductDetails()async{
+
+    productDetailsData=await ProductDetails().getDetails(id: widget.id);
+    log("========details: $productDetailsData");
+    setState(() {
+
+    });
+  }
+  @override
+  void initState() {
+getProductDetails();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +54,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
 
         centerTitle: true,
         title: Text(
-          "Categories",
+          "Product Details",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -78,10 +99,11 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
                         Container(
                           width: 225,
                           height: 290,
-                          child: Image(
-                            image: AssetImage("assets/category-image.png"),
-                          ),
+                         decoration: BoxDecoration(
+                           image: DecorationImage(image: NetworkImage("https://eplay.coderangon.com/storage/${productDetailsData["image"]}"))
+                         ),
                         ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
 
@@ -90,21 +112,21 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
                               width: 70,
                               height: 70,
                               child: Image(
-                                image: AssetImage("assets/category-image.png"),
+                                image: NetworkImage("https://eplay.coderangon.com/storage/${productDetailsData["image"]}"),
                               ),
                             ),
                             Container(
                               width: 70,
                               height: 70,
                               child: Image(
-                                image: AssetImage("assets/category-image.png"),
+                                image: NetworkImage("https://eplay.coderangon.com/storage/${productDetailsData["image"]}"),
                               ),
                             ),
                             Container(
                               width: 70,
                               height: 70,
                               child: Image(
-                                image: AssetImage("assets/category-image.png"),
+                                image: NetworkImage("https://eplay.coderangon.com/storage/${productDetailsData["image"]}"),
                               ),
                             ),
                           ],
@@ -120,7 +142,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Party Borkha Abaya Black",
+                    "${productDetailsData["title"]}",
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 24,
@@ -140,7 +162,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
               ),
               SizedBox(height: 8),
               Text(
-                "Party Abaya",
+                "${productDetailsData["brand"]}",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
@@ -154,7 +176,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
                   spacing: 8,
                   children: [
                     Text(
-                      "2880",
+                      "${productDetailsData["price"]}",
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -163,7 +185,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
                     ),
                     SizedBox(width: 6),
                     Text(
-                      "3200",
+                      "${productDetailsData["old_price"]}",
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
@@ -330,7 +352,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
               Row(
                 children: [
                   Text(
-                    "Stocks:: ",
+                    "Stocks: ",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
@@ -338,7 +360,7 @@ class _ProductdetailsViewState extends State<ProductdetailsView> {
                     ),
                   ),
                   Text(
-                    "100",
+                    "${productDetailsData["stock"]}",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
