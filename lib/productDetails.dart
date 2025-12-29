@@ -415,43 +415,54 @@ getProductDetails();
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Center(
-                          child: Container(
-                            padding: EdgeInsets.only(top: 8,right: 20,left: 20,bottom: 8),
-                            decoration: BoxDecoration(
-                              color: Color(0xffEFEFEF),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Add To Cart",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff222222),
+                      InkWell(
+                        onTap: (){
+                          log("Add Cart");
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: Container(
+                              padding: EdgeInsets.only(top: 8,right: 20,left: 20,bottom: 8),
+                              decoration: BoxDecoration(
+                                color: Color(0xffEFEFEF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Add To Cart",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff222222),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8,right: 20,bottom: 8),
-                        child: Center(
-                          child: Container(
-                            padding: EdgeInsets.only(top: 8,right: 20,left: 20,bottom: 8),
-                            decoration: BoxDecoration(
-                              color: Color(0xffF4A758),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Buy Now",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff222222),
+                      InkWell(
+                        hoverColor: Colors.transparent,
+                        onTap: (){
+                          log("Radesh");
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8,right: 20,bottom: 8),
+                          child: Center(
+                            child: Container(
+                              padding: EdgeInsets.only(top: 8,right: 20,left: 20,bottom: 8),
+                              decoration: BoxDecoration(
+                                color: Color(0xffF4A758),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Buy Now",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff222222),
+                                ),
                               ),
                             ),
                           ),
