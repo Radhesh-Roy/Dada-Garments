@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dadagarments/controller/product-details/product-details.dart';
+import 'package:dadagarments/showProduct/order_page/payment_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductdetailsView extends StatefulWidget {
@@ -416,6 +417,7 @@ getProductDetails();
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
+                        hoverColor: Colors.transparent,
                         onTap: (){
                           log("Add Cart");
                         },
@@ -444,7 +446,7 @@ getProductDetails();
                       InkWell(
                         hoverColor: Colors.transparent,
                         onTap: (){
-                          log("Radesh");
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage(),));
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(top: 8,right: 20,bottom: 8),
