@@ -1,3 +1,4 @@
+import 'package:dadagarments/showProduct/shipping_edit/shipping_edit.dart';
 import 'package:flutter/material.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -8,6 +9,7 @@ class PaymentPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: Color(0xffFFFFFF),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -36,48 +38,63 @@ class PaymentPage extends StatelessWidget {
       bottomNavigationBar: Container(
         height: 60,
         width: double.infinity,
-        child: Container(),
+        color: Colors.transparent,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.orange
+          ),
+          child: Center(
+            child: Text("Procced To Pay", style: TextStyle(color: Colors.white70),),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           spacing: 5,
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 100,
-              width: double.infinity,
-              color: Colors.white,
-              child: Stack(
-                children: [
-                  Column(
-                    spacing: 5,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        spacing: 10,
-                        children: [
-                          Text("Radhesh Roy", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
-                          Text("01789391948", style: TextStyle(fontSize: 15, color: Colors.grey),)
-                        ],
-                      ),
-                      Text("Address: Manikdi Bazar, Matikata, Dhaka", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),maxLines: 2, overflow: TextOverflow.ellipsis,),
-                    ],
-                  ),
-                  Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        height: 30,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          color: Colors.orange,
-                          borderRadius: BorderRadius.circular(10)
+            InkWell(
+              hoverColor: Colors.transparent,
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ShippingEdit()));
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                height: 100,
+                width: double.infinity,
+                color: Colors.white,
+                child: Stack(
+                  children: [
+                    Column(
+                      spacing: 5,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          spacing: 10,
+                          children: [
+                            Text("Radhesh Roy", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+                            Text("01789391948", style: TextStyle(fontSize: 15, color: Colors.grey),)
+                          ],
                         ),
-                        child: Center(child: Text("Shipping Details",style: TextStyle(color: Colors.white),)),
-                      ))
-                ],
-              )
+                        Text("Address: Manikdi Bazar, Matikata, Dhaka", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),maxLines: 2, overflow: TextOverflow.ellipsis,),
+                      ],
+                    ),
+                    Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          height: 30,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Center(child: Text("Shipping Details",style: TextStyle(color: Colors.white),)),
+                        ))
+                  ],
+                )
+              ),
             ), //Shipping Details
             Expanded(child: ListView.builder(
               itemCount: 5,
@@ -134,10 +151,7 @@ class PaymentPage extends StatelessWidget {
                       ],
                     ),
                   );
-
-
-
-            },))
+            },)), //Product list
           ],
         )
       ),
