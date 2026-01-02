@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
-
 class ShippingEdit extends StatefulWidget {
   const ShippingEdit({super.key});
   @override
   State<ShippingEdit> createState() => _ShippingEditState();
 }
 class _ShippingEditState extends State<ShippingEdit> {
+  final _formKey=GlobalKey<FormState>();
+  TextEditingController nameC= TextEditingController();
+  TextEditingController phoneC= TextEditingController();
+  TextEditingController stateC= TextEditingController();
+  TextEditingController upzillaC= TextEditingController();
+  TextEditingController ZilaC= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: Color(0xffFFFFFF),
@@ -36,7 +42,173 @@ class _ShippingEditState extends State<ShippingEdit> {
           ),
         ),
         centerTitle: true,
-        title: Text("Edit Shipping Address"),
+        title: Text("Add Shipping Address"),
+      ),
+      body: Form(
+        key:  _formKey,
+        child: SingleChildScrollView(
+          padding:  EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                "Fill Your Shipping Address.",
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(height: 25),
+              // Name
+              Text(
+                "Your Name",
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null|| value.isEmpty){
+                    return "Please Enter Your Name  ";
+                  }
+                  return null;
+
+
+                },
+                controller: stateC,
+                decoration: InputDecoration(
+                  hintText: "Enter Your name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              // Phone Number
+              Text(
+                "Phone Number",
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null|| value.isEmpty){
+                    return "Please Enter Phone Number";
+                  }
+                  return null;
+
+
+                },
+                controller: phoneC,
+                decoration: InputDecoration(
+                  hintText: "Enter Your Number",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              // State
+              Text(
+                "State",
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null|| value.isEmpty){
+                    return "Please Enter State";
+                  }
+                  return null;
+
+
+                },
+                controller: stateC,
+                decoration: InputDecoration(
+                  hintText: "Enter State",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              //Upazila
+              Text(
+                "Enter Upzila",
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null|| value.isEmpty){
+                    return "Please Enter Upazila";
+                  }
+                  return null;
+
+
+                },
+                controller: upzillaC,
+                decoration: InputDecoration(
+                  hintText: "Enter Your Upazila",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              //Zilla========
+              Text(
+                "Enter Zila",
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 8),
+              TextFormField(
+                validator: (value){
+                  if(value==null|| value.isEmpty){
+                    return "Please Enter Zila";
+                  }
+                  return null;
+
+
+                },
+                controller: ZilaC,
+                decoration: InputDecoration(
+                  hintText: "Enter Your Zila",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              // LOGIN BUTTON
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () async{
+                    if(!_formKey.currentState!.validate()){
+                      return;
+                    }
+
+                    Map data={
+                      "name": nameC.text,
+                      "phone": phoneC.text,
+
+                    };
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding:  EdgeInsets.symmetric(vertical: 14),
+                  ),
+                  child:  Text(
+                    "Add Address",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+            ],
+          ),
+        ),
       ),
     );
   }
