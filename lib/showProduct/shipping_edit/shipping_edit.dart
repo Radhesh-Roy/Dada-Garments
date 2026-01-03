@@ -72,7 +72,7 @@ class _ShippingEditState extends State<ShippingEdit> {
 
 
                 },
-                controller: stateC,
+                controller: nameC,
                 decoration: InputDecoration(
                   hintText: "Enter Your name",
                   border: OutlineInputBorder(
@@ -189,8 +189,11 @@ class _ShippingEditState extends State<ShippingEdit> {
                     Map data={
                       "name": nameC.text,
                       "phone": phoneC.text,
-
+                      "state":stateC.text,
+                      "upazila": upzillaC.text,
+                      "zila": ZilaC.text
                     };
+
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

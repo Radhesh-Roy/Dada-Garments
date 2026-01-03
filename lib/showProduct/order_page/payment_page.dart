@@ -1,8 +1,20 @@
 import 'package:dadagarments/showProduct/shipping_edit/shipping_edit.dart';
 import 'package:flutter/material.dart';
 
-class PaymentPage extends StatelessWidget {
-  const PaymentPage({super.key});
+class PaymentPage extends StatefulWidget {
+  const PaymentPage({super.key, required this.data});
+  final String data;
+
+  @override
+  State<PaymentPage> createState() => _PaymentPageState();
+}
+
+class _PaymentPageState extends State<PaymentPage> {
+  Map shippingAddress={};
+
+  getAddress()async{
+    shippingAddress=
+  }
 
   @override
   Widget build(BuildContext context) {
