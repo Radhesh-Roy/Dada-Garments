@@ -1,16 +1,45 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class ShippingEdit extends StatefulWidget {
   const ShippingEdit({super.key});
   @override
   State<ShippingEdit> createState() => _ShippingEditState();
 }
 class _ShippingEditState extends State<ShippingEdit> {
+  Map shippingData={};
+
   final _formKey=GlobalKey<FormState>();
   TextEditingController nameC= TextEditingController();
   TextEditingController phoneC= TextEditingController();
   TextEditingController stateC= TextEditingController();
   TextEditingController upzillaC= TextEditingController();
   TextEditingController ZilaC= TextEditingController();
+
+  getShippingData()async{
+    FlutterSecureStorage storage=FlutterSecureStorage();
+    var data= await storage.read(key: "shipping");
+    if(data!= null){
+      shippingData= jsonDecode(data);
+
+      nameC.text=shippingData["name"];
+      phoneC.text=shippingData["phone"];
+      stateC.text=shippingData["state"];
+      upzillaC.text=shippingData["upazila"];
+      ZilaC.text=shippingData["zila"];
+    }
+
+
+  }
+  @override
+  void initState() {
+    getShippingData();
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,6 +215,7 @@ class _ShippingEditState extends State<ShippingEdit> {
                       return;
                     }
 
+
                     Map data={
                       "name": nameC.text,
                       "phone": phoneC.text,
@@ -193,6 +223,10 @@ class _ShippingEditState extends State<ShippingEdit> {
                       "upazila": upzillaC.text,
                       "zila": ZilaC.text
                     };
+
+FlutterSecureStorage storage=FlutterSecureStorage();
+await storage.write(key: "shipping", value: jsonEncode(data));
+Navigator.pop(context);
 
                   },
                   style: ElevatedButton.styleFrom(

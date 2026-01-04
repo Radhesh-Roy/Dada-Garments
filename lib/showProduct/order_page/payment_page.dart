@@ -1,9 +1,12 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:dadagarments/showProduct/shipping_edit/shipping_edit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key, required this.data});
-  final String data;
+  const PaymentPage({super.key,});
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -12,9 +15,26 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   Map shippingAddress={};
 
-  getAddress()async{
-    shippingAddress=
+  getShipping()async{
+    FlutterSecureStorage storage=FlutterSecureStorage();
+    var data= await storage.read(key: "shipping");
+    
+    if(data != null){
+      shippingAddress= jsonDecode(data);
+      log("$shippingAddress");
+    }
+   setState(() {
+
+   });
+
   }
+
+  @override
+  void initState() {
+    getShipping();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +89,7 @@ class _PaymentPageState extends State<PaymentPage> {
             InkWell(
               hoverColor: Colors.transparent,
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ShippingEdit()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ShippingEdit())).then((c){getShipping();});
               },
               child: Container(
                 padding: EdgeInsets.all(10),
@@ -85,11 +105,11 @@ class _PaymentPageState extends State<PaymentPage> {
                         Row(
                           spacing: 10,
                           children: [
-                            Text("Radhesh Roy", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
-                            Text("01789391948", style: TextStyle(fontSize: 15, color: Colors.grey),)
+                            Text("${shippingAddress["name"]}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+                            Text("${shippingAddress["phone"]}", style: TextStyle(fontSize: 15, color: Colors.grey),)
                           ],
                         ),
-                        Text("Address: Manikdi Bazar, Matikata, Dhaka", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),maxLines: 2, overflow: TextOverflow.ellipsis,),
+                        Text("Address: ${shippingAddress["state"]}, ${shippingAddress["upazila"]}, ${shippingAddress["zila"]}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),maxLines: 2, overflow: TextOverflow.ellipsis,),
                       ],
                     ),
                     Positioned(
