@@ -244,7 +244,6 @@ class _HomepageState extends State<Homepage> {
                       onTap: (){
 
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductdetailsView(id: sellProductData["top-selling"][index]["id"])));
-
                       },
                       child: Card(
                         child: Container(
@@ -261,7 +260,6 @@ class _HomepageState extends State<Homepage> {
                                 spacing: 5,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-
                                   Container(
                                     padding: EdgeInsets.all(5),
                                     height: 120,
