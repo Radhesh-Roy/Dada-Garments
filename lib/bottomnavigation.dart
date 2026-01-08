@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dadagarments/category.dart';
 import 'package:dadagarments/homePage.dart';
 import 'package:flutter/material.dart';
@@ -11,21 +12,34 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int _currentIndex = 2;
-  final List<Widget> pages = [
-    Center(child: Text("Home")),
-    Center(child: Text("Category")),
-    Center(child: Text("Cart")),
-    Center(child: Text("Profile")),
-  ];
-  final iconList = <IconData>[
-    Icons.home,
-    Icons.category,
-    Icons.shopping_cart,
-    Icons.person,
-  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
+        ),
+        child: CurvedNavigationBar(
+
+          backgroundColor: Colors.white,
+          buttonBackgroundColor: Color(0xffF08F3C).withAlpha(70),
+          color: Color(0xffF08F3C).withAlpha(70),
+          height: 72,
+          items: [
+            Icon(Icons.home_outlined),
+            Icon(Icons.list),
+            Icon(Icons.search_outlined),
+            Icon(Icons.shopping_bag_outlined),
+            Icon(Icons.bookmark_outline),
+          ],
+          index: _currentIndex,
+          onTap: (value) {
+            _currentIndex=value;
+          },
+        ),
+      ),
+
+    );
 
   }
 }
