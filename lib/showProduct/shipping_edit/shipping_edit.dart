@@ -12,8 +12,10 @@ class _ShippingEditState extends State<ShippingEdit> {
   Map shippingData={};
 
   final _formKey=GlobalKey<FormState>();
+
   TextEditingController nameC= TextEditingController();
   TextEditingController phoneC= TextEditingController();
+
   TextEditingController stateC= TextEditingController();
   TextEditingController upzillaC= TextEditingController();
   TextEditingController ZilaC= TextEditingController();

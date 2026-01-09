@@ -5,7 +5,6 @@ import 'package:dadagarments/signUp.dart';
 import 'package:dadagarments/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-
 import 'bottomnavigation.dart';
 import 'cart.dart';
 import 'category.dart';
