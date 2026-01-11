@@ -14,8 +14,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'controller/home/selling-product/sell-product.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key, required this.title});
-  final String title;
+  const Homepage({super.key,});
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -24,7 +23,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   List data = [];
   List categoryList = [];
-  Map sellProductData={};
+  Map sellProductData={
+    "top-selling": [],
+    "hot-selling": [],
+  };
   getByData() async {
     data = await GetSlider().getSlider();
     setState(() {});
@@ -235,7 +237,7 @@ class _HomepageState extends State<Homepage> {
                 height: 268,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  itemCount: sellProductData["top-selling"].length,
+                  itemCount: sellProductData["top-selling"]!.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
 

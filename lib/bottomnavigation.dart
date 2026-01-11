@@ -1,5 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:dadagarments/cart.dart';
 import 'package:dadagarments/category.dart';
+import 'package:dadagarments/discount.dart';
 import 'package:dadagarments/homePage.dart';
 import 'package:flutter/material.dart';
 //import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -11,16 +13,18 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _currentIndex = 2;
+  List screen=[Homepage(),CategoryPage(), CartPage(), CartPage(), DiscountPage()];
+
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: screen[_currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
         ),
         child: CurvedNavigationBar(
-
           backgroundColor: Colors.white,
           buttonBackgroundColor: Color(0xffF08F3C).withAlpha(70),
           color: Color(0xffF08F3C).withAlpha(70),
@@ -34,7 +38,9 @@ class _BottomBarState extends State<BottomBar> {
           ],
           index: _currentIndex,
           onTap: (value) {
-            _currentIndex=value;
+            setState(() {
+              _currentIndex=value;
+            });
           },
         ),
       ),
@@ -43,37 +49,3 @@ class _BottomBarState extends State<BottomBar> {
 
   }
 }
-   // floatingActionButton: FloatingActionButton(onPressed: () {  })
-      //params
- //   ),
-    //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    // bottomNavigationBar: AnimatedBottomNavigationBar(
-    //   icons: iconList,
-    //   activeIndex: _currentIndex,
-    //   gapLocation: GapLocation.center,
-    //   notchSmoothness: NotchSmoothness.smoothEdge,
-    //   onTap: (index) => setState(() => _currentIndex = index),
-      //other params
-//     ),
-//   );}
-// }
-//     return Scaffold(
-//       bottomNavigationBar: BottomNavigationBar(
-//         currentIndex: 0,
-//         onTap: (value) {
-//           if(value==0){
-//             Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(title: '',),));
-//           }
-//           else if(value==1){
-//             Navigator.push(context,MaterialPageRoute(builder: (context) => CategoryPage(),));
-//           }
-//         },
-//         items: [
-//           BottomNavigationBarItem(icon: Icon(Icons.home, ), label: "Homes"),
-//           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-//           BottomNavigationBarItem(icon: Icon(Icons.settings_outlined), label: "Setting")
-//
-//         ])
-//     );
-//   }
-// }

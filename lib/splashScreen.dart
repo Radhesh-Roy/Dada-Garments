@@ -1,3 +1,4 @@
+import 'package:dadagarments/bottomnavigation.dart';
 import 'package:dadagarments/discount.dart';
 import 'package:dadagarments/homePage.dart';
 import 'package:dadagarments/loginPage.dart';
@@ -19,7 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
    }
    else{
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(title: '',),));
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomBar(),));
    }
  }
  @override
