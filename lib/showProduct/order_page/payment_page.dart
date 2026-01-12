@@ -67,17 +67,23 @@ class _PaymentPageState extends State<PaymentPage> {
         centerTitle: true,
         title: Image.asset("assets/appbarImage.png", height: 40, width: 133,),
       ),
-      bottomNavigationBar: Container(
-        height: 60,
-        width: double.infinity,
-        color: Colors.transparent,
+      bottomNavigationBar: InkWell(
+        hoverColor: Colors.transparent,
+        onTap: (){
+          log("payment");
+        },
         child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.orange
-          ),
-          child: Center(
-            child: Text("Procced To Pay", style: TextStyle(color: Colors.white70),),
+          height: 60,
+          width: double.infinity,
+          color: Colors.transparent,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.orange
+            ),
+            child: Center(
+              child: Text("Procced To Pay", style: TextStyle(color: Colors.white70),),
+            ),
           ),
         ),
       ),

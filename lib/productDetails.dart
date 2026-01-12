@@ -48,7 +48,14 @@ getProductDetails();
             ),
             child: Padding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
-              child: Image.asset("assets/backImage.png", height: 22, width: 22),
+              child: InkWell(
+                hoverColor: Colors.transparent,
+                  onTap: (){
+
+                    Navigator.pop(context);
+                  },
+
+                  child: Image.asset("assets/backImage.png", height: 22, width: 22)),
             ),
           ),
         ),
