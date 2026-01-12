@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:dadagarments/productDetails.dart';
 import 'package:dadagarments/showProduct/shipping_edit/shipping_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key,});
+   PaymentPage({super.key, required this.data, });
+  Map<String, dynamic> data;
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -14,6 +16,7 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage> {
   Map shippingAddress={};
+  List productList=[];
 
   getShipping()async{
     FlutterSecureStorage storage=FlutterSecureStorage();
@@ -28,10 +31,14 @@ class _PaymentPageState extends State<PaymentPage> {
    });
 
   }
+  getProduct()async{
+    productList= await [widget.data];
+  }
 
   @override
   void initState() {
     getShipping();
+    getProduct();
     super.initState();
   }
 
@@ -135,7 +142,7 @@ class _PaymentPageState extends State<PaymentPage> {
               ),
             ), //Shipping Details
             Expanded(child: ListView.builder(
-              itemCount: 5,
+              itemCount: productList.length,
               itemBuilder: (context, index) {
                 return Container(
                     height: 100,
@@ -153,7 +160,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                image: DecorationImage(image: AssetImage("assets/card1.png"),),
+                                image: DecorationImage(image: NetworkImage("https://eplay.coderangon.com/storage/${productList[index]["image"]}"),),
                               ),
                             ),
                           ),
@@ -167,7 +174,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               Text(
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                "Party Borkha Abaya Koliza",
+                                "${productList[index]["title"]}",
                                 style: TextStyle(
 
                                   fontSize: 14,
@@ -178,8 +185,8 @@ class _PaymentPageState extends State<PaymentPage> {
                               Row(
                                 spacing: 10,
                                 children: [
-                                  Text("BDT 2880", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
-                                  Text("BDT 3200", style: TextStyle(fontSize: 10, color: Colors.grey, decoration: TextDecoration.lineThrough),)
+                                  Text("${productList[index]["price"]}", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+                                  Text("${productList[index]["price"]}", style: TextStyle(fontSize: 10, color: Colors.grey, decoration: TextDecoration.lineThrough),)
                                 ],
                               )
                             ],

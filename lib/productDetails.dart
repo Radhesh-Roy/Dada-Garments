@@ -453,7 +453,15 @@ getProductDetails();
                       InkWell(
                         hoverColor: Colors.transparent,
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage(),));
+                          var data={
+                            "title":"${productDetailsData["title"]}",
+                            "size":"5",
+                            "price": "${productDetailsData["price"]}",
+                            "old_price":"${productDetailsData["old_price"]}",
+                            "image":"${productDetailsData["image"]}"
+                          };
+                          log("$data");
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage(data: data,),));
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(top: 8,right: 20,bottom: 8),
