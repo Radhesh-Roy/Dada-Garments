@@ -454,6 +454,7 @@ getProductDetails();
                         hoverColor: Colors.transparent,
                         onTap: (){
                           var data={
+                            "id": productDetailsData["id"],
                             "title":"${productDetailsData["title"]}",
                             "size":"5",
                             "price": "${productDetailsData["price"]}",
@@ -461,7 +462,7 @@ getProductDetails();
                             "image":"${productDetailsData["image"]}"
                           };
                           log("$data");
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage(data: data,),));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage(data: data),));
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(top: 8,right: 20,bottom: 8),

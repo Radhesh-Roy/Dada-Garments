@@ -1,8 +1,7 @@
 import 'dart:developer';
 
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dadagarments/controller/home/homecontroller.dart';
-import 'package:dadagarments/controller/product-details/product-details.dart';
-import 'package:dadagarments/controller/product/product_controller.dart';
 import 'package:dadagarments/controller/slider/sliderApi.dart';
 import 'package:dadagarments/productDetails.dart';
 import 'package:dadagarments/showProduct/category_product/product_show.dart';
@@ -11,7 +10,10 @@ import 'package:dadagarments/showProduct/top-selling/top-sell.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import 'cart.dart';
+import 'category.dart';
 import 'controller/home/selling-product/sell-product.dart';
+import 'discount.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key,});
@@ -21,6 +23,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  List screen=[Homepage(),CategoryPage(), CartPage(), CartPage(), DiscountPage()];
+  int _currentIndex = 0;
   List data = [];
   List categoryList = [];
   Map sellProductData={
@@ -56,6 +60,31 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
+        ),
+        child: CurvedNavigationBar(
+          backgroundColor: Colors.white,
+          buttonBackgroundColor: Color(0xffF08F3C).withAlpha(70),
+          color: Color(0xffF08F3C).withAlpha(70),
+          height: 72,
+          items: [
+            Icon(Icons.home_outlined),
+            Icon(Icons.list),
+            Icon(Icons.search_outlined),
+            Icon(Icons.shopping_bag_outlined),
+            Icon(Icons.bookmark_outline),
+          ],
+          index: _currentIndex,
+          onTap: (value) {
+            log("$value");
+            setState(() {
+              _currentIndex=value;
+             });
+          },
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Color(0xffFFFFFF),
         leading: Image.asset(
@@ -168,9 +197,9 @@ class _HomepageState extends State<Homepage> {
                       onTap: (){
                         log("${categoryList[index]["id"]}");
                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductShowPage(title:"${categoryList[index]["id"]}",),));
-                        
+
                       },
-                      
+
                       child: Container(
                         margin: EdgeInsets.all(5),
                         height: 109,

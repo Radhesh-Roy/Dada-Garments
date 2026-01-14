@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                    var data= await LogInAccount.loginAccount(phone: numC.text, password: passC.text);
                     if(data){
 
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomAppBar(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(),));
                     }
                   },
                   style: ElevatedButton.styleFrom(

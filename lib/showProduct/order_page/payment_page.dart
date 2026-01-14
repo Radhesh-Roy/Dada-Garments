@@ -75,8 +75,28 @@ class _PaymentPageState extends State<PaymentPage> {
         title: Image.asset("assets/appbarImage.png", height: 40, width: 133,),
       ),
       bottomNavigationBar: InkWell(
+
         hoverColor: Colors.transparent,
         onTap: (){
+          var data={
+            "customer_name": "${shippingAddress["name"]}",
+            "customer_phone": "${shippingAddress["phone"]}",
+            "payment_method": "cod",
+            "items": [
+              {
+                "product_id": productList['id'],
+                "product_name": "Headphone",
+                "price": 1500,
+                "quantity": 2
+              }
+            ],
+            "address": {
+              "street": "Uttara Road 3",
+              "upazila": "Uttara",
+              "district": "Dhaka"
+            }
+          };
+
           log("payment");
         },
         child: Container(

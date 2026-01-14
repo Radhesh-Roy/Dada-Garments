@@ -19,7 +19,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screen[_currentIndex],
+    //body: screen[_currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
