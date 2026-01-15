@@ -18,10 +18,12 @@ class _ShippingEditState extends State<ShippingEdit> {
 
   TextEditingController stateC= TextEditingController();
   TextEditingController upzillaC= TextEditingController();
+
   TextEditingController ZilaC= TextEditingController();
 
   getShippingData()async{
     FlutterSecureStorage storage=FlutterSecureStorage();
+
     var data= await storage.read(key: "shipping");
     if(data!= null){
       shippingData= jsonDecode(data);
