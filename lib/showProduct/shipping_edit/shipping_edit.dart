@@ -31,6 +31,7 @@ class _ShippingEditState extends State<ShippingEdit> {
       nameC.text=shippingData["name"];
       phoneC.text=shippingData["phone"];
       stateC.text=shippingData["state"];
+
       upzillaC.text=shippingData["upazila"];
       ZilaC.text=shippingData["zila"];
     }
