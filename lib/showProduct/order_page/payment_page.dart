@@ -103,7 +103,9 @@ class _PaymentPageState extends State<PaymentPage> {
           height: 60,
           width: double.infinity,
           color: Colors.transparent,
+
           child: Container(
+
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: Colors.orange
