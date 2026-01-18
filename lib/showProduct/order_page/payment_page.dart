@@ -84,7 +84,7 @@ class _PaymentPageState extends State<PaymentPage> {
             "payment_method": "cod",
             "items": [
               {
-                "product_id": productList['id'],
+                "product_id": "",
                 "product_name": "Headphone",
                 "price": 1500,
                 "quantity": 2
@@ -103,9 +103,7 @@ class _PaymentPageState extends State<PaymentPage> {
           height: 60,
           width: double.infinity,
           color: Colors.transparent,
-
           child: Container(
-
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: Colors.orange
