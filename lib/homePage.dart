@@ -60,7 +60,8 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: Theme(
+      bottomNavigationBar: SafeArea(
+        child: Theme(
         data: Theme.of(context).copyWith(
           iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
         ),
@@ -81,10 +82,10 @@ class _HomepageState extends State<Homepage> {
             log("$value");
             setState(() {
               _currentIndex=value;
-             });
+            });
           },
         ),
-      ),
+      ),),
       appBar: AppBar(
         backgroundColor: Color(0xffFFFFFF),
         leading: Image.asset(
