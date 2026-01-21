@@ -1,10 +1,7 @@
-import 'package:dadagarments/discount.dart';
+import 'package:dadagarments/bottomnavigation.dart';
 import 'package:dadagarments/signUp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
 import 'controller/authentication/logIn.dart';
-import 'homePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -53,8 +50,6 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-
-
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -203,7 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                    var data= await LogInAccount.loginAccount(phone: numC.text, password: passC.text);
                     if(data){
 
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>BottomBar(),));
                     }
                   },
                   style: ElevatedButton.styleFrom(

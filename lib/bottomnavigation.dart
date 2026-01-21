@@ -4,7 +4,6 @@ import 'package:dadagarments/category.dart';
 import 'package:dadagarments/discount.dart';
 import 'package:dadagarments/homePage.dart';
 import 'package:flutter/material.dart';
-//import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
 
@@ -19,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    //body: screen[_currentIndex],
+    body: screen[_currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
