@@ -30,13 +30,10 @@ class _ShippingEditState extends State<ShippingEdit> {
 
       nameC.text=shippingData["name"];
       phoneC.text=shippingData["phone"];
-      stateC.text=shippingData["state"];
-
+      stateC.text=shippingData["Street"];
       upzillaC.text=shippingData["upazila"];
       ZilaC.text=shippingData["zila"];
     }
-
-
   }
   @override
   void initState() {
@@ -141,14 +138,14 @@ class _ShippingEditState extends State<ShippingEdit> {
               SizedBox(height: 10),
               // State
               Text(
-                "State",
+                "Street",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 8),
               TextFormField(
                 validator: (value){
                   if(value==null|| value.isEmpty){
-                    return "Please Enter State";
+                    return "Please Enter Street";
                   }
                   return null;
 
@@ -156,7 +153,7 @@ class _ShippingEditState extends State<ShippingEdit> {
                 },
                 controller: stateC,
                 decoration: InputDecoration(
-                  hintText: "Enter State",
+                  hintText: "Enter Street",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -224,7 +221,7 @@ class _ShippingEditState extends State<ShippingEdit> {
                     Map data={
                       "name": nameC.text,
                       "phone": phoneC.text,
-                      "state":stateC.text,
+                      "Street":stateC.text,
                       "upazila": upzillaC.text,
                       "zila": ZilaC.text
                     };

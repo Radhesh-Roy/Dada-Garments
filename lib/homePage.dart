@@ -107,7 +107,6 @@ class _HomepageState extends State<Homepage> {
         padding: const EdgeInsets.all(15),
         child: Container(
           child: ListView(
-
             scrollDirection: Axis.vertical,
             children: [
               Row(

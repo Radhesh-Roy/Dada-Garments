@@ -3,6 +3,7 @@ import 'package:dadagarments/cart.dart';
 import 'package:dadagarments/category.dart';
 import 'package:dadagarments/discount.dart';
 import 'package:dadagarments/homePage.dart';
+import 'package:dadagarments/profile.dart';
 import 'package:flutter/material.dart';
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -12,7 +13,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  List screen=[Homepage(),CategoryPage(), CartPage(), CartPage(), DiscountPage()];
+  List screen=[Homepage(),CategoryPage(), DiscountPage(), CartPage(),ProfilescreenView() ];
 
   int _currentIndex = 0;
   @override
@@ -33,7 +34,7 @@ class _BottomBarState extends State<BottomBar> {
             Icon(Icons.list),
             Icon(Icons.search_outlined),
             Icon(Icons.shopping_bag_outlined),
-            Icon(Icons.bookmark_outline),
+            Icon(Icons.person),
           ],
           index: _currentIndex,
           onTap: (value) {
