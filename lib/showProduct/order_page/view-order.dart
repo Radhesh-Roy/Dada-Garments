@@ -14,6 +14,7 @@ class _ViewOrderPageState extends State<ViewOrderPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        shadowColor: Colors.transparent,
         backgroundColor: Color(0xffFFFFFF),
         leading:
         Padding(
@@ -37,7 +38,6 @@ class _ViewOrderPageState extends State<ViewOrderPage> {
             ),
           ),
         ),
-
         centerTitle: true,
         title: Text(
           "My Order",
