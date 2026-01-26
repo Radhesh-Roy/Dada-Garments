@@ -40,8 +40,10 @@ class _ViewOrderPageState extends State<ViewOrderPage> {
         ),
         centerTitle: true,
         title: Text(
+
           "My Order",
           style: TextStyle(
+
             fontSize: 20,
             fontWeight: FontWeight.w600,
             color: Color(0xff1E1E1E),
