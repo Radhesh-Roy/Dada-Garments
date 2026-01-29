@@ -59,31 +59,32 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
-        ),
-        child: CurvedNavigationBar(
-          backgroundColor: Colors.white,
-          buttonBackgroundColor: Color(0xffF08F3C).withAlpha(70),
-          color: Color(0xffF08F3C).withAlpha(70),
-          height: 72,
-          items: [
-            Icon(Icons.home_outlined),
-            Icon(Icons.list),
-            Icon(Icons.search_outlined),
-            Icon(Icons.shopping_bag_outlined),
-            Icon(Icons.bookmark_outline),
-          ],
-          index: _currentIndex,
-          onTap: (value) {
-            log("$value");
-            setState(() {
-              _currentIndex=value;
-             });
-          },
-        ),
-      ),
+      // bottomNavigationBar: SafeArea(
+      //   child: Theme(
+      //   data: Theme.of(context).copyWith(
+      //     iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
+      //   ),
+      //   child: CurvedNavigationBar(
+      //     backgroundColor: Colors.white,
+      //     buttonBackgroundColor: Color(0xffF08F3C).withAlpha(70),
+      //     color: Color(0xffF08F3C).withAlpha(70),
+      //     height: 72,
+      //     items: [
+      //       Icon(Icons.home_outlined),
+      //       Icon(Icons.list),
+      //       Icon(Icons.search_outlined),
+      //       Icon(Icons.shopping_bag_outlined),
+      //       Icon(Icons.bookmark_outline),
+      //     ],
+      //     index: _currentIndex,
+      //     onTap: (value) {
+      //       log("$value");
+      //       setState(() {
+      //         _currentIndex=value;
+      //       });
+      //     },
+      //   ),
+      // ),),
       appBar: AppBar(
         backgroundColor: Color(0xffFFFFFF),
         leading: Image.asset(
@@ -105,7 +106,6 @@ class _HomepageState extends State<Homepage> {
         padding: const EdgeInsets.all(15),
         child: Container(
           child: ListView(
-
             scrollDirection: Axis.vertical,
             children: [
               Row(

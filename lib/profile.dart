@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:dadagarments/discount.dart';
+import 'package:dadagarments/showProduct/order_page/view-order.dart';
 import 'package:flutter/material.dart';
 
 class ProfilescreenView extends StatefulWidget {
@@ -62,9 +66,8 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
                 ),
               ),
             ),
-            Center(child: Text("Hello John Doe",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 19,color: Color(0xff222222)),)),
+            Center(child: Text("Radhesh Roy",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 19,color: Color(0xff222222)),)),
             SizedBox(height: 25,),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
@@ -73,7 +76,7 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Container(
-                  width: 400,
+                  width: double.infinity,
                   height: 350,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -84,7 +87,7 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
                     children: [
                       SizedBox(height: 10,),
                       Container(
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Color(0xffFEFAF6)
@@ -109,39 +112,47 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
                             Icon(Icons.arrow_forward_ios)
                           ],
                         ),
-                      ),
+                      ),// My Profile
+                      SizedBox(height: 5,),
+                      InkWell(
+                        hoverColor: Colors.transparent,
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ViewOrderPage(),));
+
+                        },
+
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: Color(0xffFEFAF6)
+                          ),
+                          child: Row(
+                            spacing: 20,
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Container(
+                                    width: 22,
+                                    height: 22,
+                                    child: Image.asset(
+                                      "assets/order.png",
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+
+                              ),
+                              Text("My Order"),
+                              Spacer(),
+                              Icon(Icons.arrow_forward_ios)
+                            ],
+                          ),
+                        ),
+                      ),// My Order
+
                       SizedBox(height: 5,),
                       Container(
-                        width: 340,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Color(0xffFEFAF6)
-                        ),
-                        child: Row(
-                          spacing: 20,
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Container(
-                                  width: 22,
-                                  height: 22,
-                                  child: Image.asset(
-                                    "assets/order.png",
-                                    fit: BoxFit.cover,
-                                  ),
-                                )
-
-                            ),
-                            Text("My Order"),
-                            Spacer(),
-                            Icon(Icons.arrow_forward_ios)
-                          ],
-                        ),
-                      ),
-
-                      SizedBox(height: 5,),
-                      Container(
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Color(0xffFEFAF6)
@@ -166,11 +177,11 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
                             Icon(Icons.arrow_forward_ios)
                           ],
                         ),
-                      ),
+                      ),//Offer Order
 
                       SizedBox(height: 5,),
                       Container(
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Color(0xffFEFAF6)
@@ -195,11 +206,11 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
                             Icon(Icons.arrow_forward_ios)
                           ],
                         ),
-                      ),
+                      ),//My Review
 
                       SizedBox(height: 5,),
                       Container(
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Color(0xffFEFAF6)
@@ -224,7 +235,7 @@ class _ProfilescreenViewState extends State<ProfilescreenView> {
 
                           ],
                         ),
-                      ),
+                      ),//Logout
                     ],
                   ),
                 ),

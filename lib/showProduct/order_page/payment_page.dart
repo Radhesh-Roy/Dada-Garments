@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-
-import 'package:dadagarments/productDetails.dart';
+import 'package:dadagarments/controller/order/order.dart';
+import 'package:dadagarments/homePage.dart';
 import 'package:dadagarments/showProduct/shipping_edit/shipping_edit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -24,15 +25,17 @@ class _PaymentPageState extends State<PaymentPage> {
     
     if(data != null){
       shippingAddress= jsonDecode(data);
-      log("$shippingAddress");
-    }
-   setState(() {
+     setState(() {
 
-   });
+     });
+    }
 
   }
   getProduct()async{
     productList= await [widget.data];
+    setState(() {
+
+    });
   }
 
   @override
@@ -77,35 +80,45 @@ class _PaymentPageState extends State<PaymentPage> {
       bottomNavigationBar: InkWell(
 
         hoverColor: Colors.transparent,
-        onTap: (){
-          var data={
+        onTap: () async{
+          var order={
             "customer_name": "${shippingAddress["name"]}",
             "customer_phone": "${shippingAddress["phone"]}",
             "payment_method": "cod",
             "items": [
               {
+<<<<<<< HEAD
                 "product_id": "",
                 "product_name": "Headphone",
                 "price": 1500,
+=======
+                "product_id": "${productList[0]["id"]}",
+                "product_name": "${productList[0]["title"]}",
+                "price": "${productList[0]["price"]}",
+>>>>>>> 5fea414c96f2a20b06e26ad50f0e95ebbc2cb44e
                 "quantity": 2
               }
             ],
             "address": {
-              "street": "Uttara Road 3",
-              "upazila": "Uttara",
-              "district": "Dhaka"
+              "street": "${shippingAddress["Street"]}",
+              "upazila": "${shippingAddress["upazila"]}",
+              "district": "${shippingAddress["zila"]}"
             }
           };
+ bool data= await OrderConfirm().confirmOrder(data: order);
 
-          log("payment");
+ if(data == true){
+   Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
+ }
+
+
+
         },
         child: Container(
           height: 60,
           width: double.infinity,
           color: Colors.transparent,
-
           child: Container(
-
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: Colors.orange
@@ -144,7 +157,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             Text("${shippingAddress["phone"]}", style: TextStyle(fontSize: 15, color: Colors.grey),)
                           ],
                         ),
-                        Text("Address: ${shippingAddress["state"]}, ${shippingAddress["upazila"]}, ${shippingAddress["zila"]}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),maxLines: 2, overflow: TextOverflow.ellipsis,),
+                        Text("Address: ${shippingAddress["Street"]}, ${shippingAddress["upazila"]}, ${shippingAddress["zila"]}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),maxLines: 2, overflow: TextOverflow.ellipsis,),
                       ],
                     ),
                     Positioned(

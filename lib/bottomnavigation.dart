@@ -3,8 +3,8 @@ import 'package:dadagarments/cart.dart';
 import 'package:dadagarments/category.dart';
 import 'package:dadagarments/discount.dart';
 import 'package:dadagarments/homePage.dart';
+import 'package:dadagarments/profile.dart';
 import 'package:flutter/material.dart';
-//import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
 
@@ -13,13 +13,13 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  List screen=[Homepage(),CategoryPage(), CartPage(), CartPage(), DiscountPage()];
+  List screen=[Homepage(),CategoryPage(), DiscountPage(), CartPage(),ProfilescreenView() ];
 
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    //body: screen[_currentIndex],
+    body: screen[_currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
@@ -36,10 +36,12 @@ class _BottomBarState extends State<BottomBar> {
             Icon(Icons.search_outlined),
 
             Icon(Icons.shopping_bag_outlined),
-            Icon(Icons.bookmark_outline),
+            Icon(Icons.person),
           ],
           index: _currentIndex,
+
           onTap: (value) {
+
             setState(() {
               _currentIndex=value;
             });
