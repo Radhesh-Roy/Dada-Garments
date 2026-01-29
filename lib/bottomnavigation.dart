@@ -32,7 +32,9 @@ class _BottomBarState extends State<BottomBar> {
           items: [
             Icon(Icons.home_outlined),
             Icon(Icons.list),
+
             Icon(Icons.search_outlined),
+
             Icon(Icons.shopping_bag_outlined),
             Icon(Icons.bookmark_outline),
           ],
@@ -49,3 +51,4 @@ class _BottomBarState extends State<BottomBar> {
 
   }
 }
+

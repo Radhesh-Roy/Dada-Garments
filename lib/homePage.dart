@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dadagarments/controller/home/homecontroller.dart';
 import 'package:dadagarments/controller/slider/sliderApi.dart';

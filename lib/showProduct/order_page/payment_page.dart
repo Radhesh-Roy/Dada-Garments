@@ -84,7 +84,7 @@ class _PaymentPageState extends State<PaymentPage> {
             "payment_method": "cod",
             "items": [
               {
-                "product_id": productList['id'],
+                "product_id": "",
                 "product_name": "Headphone",
                 "price": 1500,
                 "quantity": 2
