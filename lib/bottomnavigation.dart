@@ -25,7 +25,9 @@ class _BottomBarState extends State<BottomBar> {
           iconTheme: IconThemeData(color: Color(0xff757575), size: 26),
         ),
         child: CurvedNavigationBar(
+
           backgroundColor: Colors.white,
+
           buttonBackgroundColor: Color(0xffF08F3C).withAlpha(70),
           color: Color(0xffF08F3C).withAlpha(70),
           height: 72,
