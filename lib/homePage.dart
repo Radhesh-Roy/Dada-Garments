@@ -87,6 +87,7 @@ class _HomepageState extends State<Homepage> {
       //   ),
       // ),),
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: Color(0xffFFFFFF),
         leading: Image.asset(
           "assets/menu.png",
