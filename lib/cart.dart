@@ -13,6 +13,7 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: Color(0xffFFFFFF),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
