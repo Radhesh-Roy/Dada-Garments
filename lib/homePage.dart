@@ -185,7 +185,6 @@ class _HomepageState extends State<Homepage> {
               SizedBox(height: 15),
               SizedBox(
                 height: 100,
-
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
 
@@ -358,8 +357,10 @@ class _HomepageState extends State<Homepage> {
                                           ),
                                         ),
                                         child: Center(
+
                                           child: Text("Add To Cart"),
                                         ),
+
                                       ),
                                     ),
                                   ),
